@@ -1,0 +1,193 @@
+.tag-manager {
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    width: 100%;
+    max-width: 450px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.new-tag-form {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.new-tag-form input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.new-tag-form input:focus {
+    outline: none;
+    border-color: var(--google-blue);
+}
+
+.color-picker-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.color-picker-wrapper .color-input {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+}
+
+.color-picker-wrapper .color-input::-webkit-color-swatch-wrapper {
+    padding: 2px;
+}
+
+.color-picker-wrapper .color-input::-webkit-color-swatch {
+    border: none;
+    border-radius: 4px;
+}
+
+.color-picker-wrapper.small .color-input {
+    width: 28px;
+    height: 28px;
+}
+
+.color-picker-wrapper .color-icon {
+    position: absolute;
+    pointer-events: none;
+    color: white;
+    mix-blend-mode: difference;
+}
+
+.color-picker {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.color-picker.small {
+    gap: 3px;
+}
+
+.color-option {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.color-picker.small .color-option {
+    width: 18px;
+    height: 18px;
+}
+
+.color-option.selected {
+    border-color: var(--text-primary);
+    transform: scale(1.1);
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+.add-tag-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    border: 2px solid var(--google-blue);
+    border-radius: 8px;
+    background: var(--google-blue);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-tag-btn:hover {
+    background: #3367d6;
+}
+
+.tag-list {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.tag-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tag-list li:last-child {
+    border-bottom: none;
+}
+
+.tag-preview {
+    padding: 6px 14px;
+    border: 2px solid;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.tag-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tag-actions button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tag-actions button:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.tag-edit-row {
+    display: flex;
+    gap: 8px;
+    flex: 1;
+}
+
+.tag-edit-row input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 2px solid var(--google-blue);
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.save-edit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    border: none;
+    border-radius: 6px;
+    background: var(--google-green);
+    color: white;
+    cursor: pointer;
+}

@@ -1,40 +1,19 @@
 services:
+  nginx:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
   backend:
     build:
       context: ..
       dockerfile: docker/Dockerfile.backend
-    container_name: todo-backend
-    ports:
-      - "8000:8000"
-    environment:
-      - PYTHONUNBUFFERED=1
     volumes:
       - todo-data:/app/data
-    healthcheck:
-      test:
-        [
-          "CMD",
-          "python",
-          "-c",
-          "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')",
-        ]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 5s
-    restart: unless-stopped
-
-  frontend:
-    build:
-      context: ..
-      dockerfile: docker/Dockerfile.frontend
-    container_name: todo-frontend
-    ports:
-      - "3000:80"
-    depends_on:
-      backend:
-        condition: service_healthy
-    restart: unless-stopped
 
 volumes:
   todo-data:

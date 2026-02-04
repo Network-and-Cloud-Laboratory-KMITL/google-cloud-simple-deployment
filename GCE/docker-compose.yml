@@ -1,0 +1,22 @@
+services:
+  backend:
+    build: ./todo-backend
+    image: todo-backend
+    container_name: todo-backend
+    restart: always
+    networks:
+      - todo-network
+
+  frontend:
+    build: ./todo-dashboard
+    image: todo-dashboard
+    container_name: todo-dashboard
+    ports:
+      - "80:80"
+    restart: always
+    networks:
+      - todo-network
+
+networks:
+  todo-network:
+    driver: bridge

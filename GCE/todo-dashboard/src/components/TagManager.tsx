@@ -66,7 +66,13 @@ export const TagManager: React.FC<TagManagerProps> = ({
         <div className="form-header">
           <div className="header-title">
             <h2>Manage Tags</h2>
-            <InfoIcon size={20} />
+            <InfoIcon size={20} className="information-icon" />
+            <div className="tooltip">
+              Create and manage tags to organize your tasks. Add new tags with
+              custom colors, edit existing ones, or delete tags you no longer
+              need. Tags help you filter and categorize tasks for better
+              productivity.
+            </div>
           </div>
           <button className="close-btn" onClick={onClose}>
             <X size={20} />

@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import type { Task, Tag, SubTask } from "../types";
 import { v4 as uuidv4 } from "uuid";
-import { Plus, X } from "lucide-react";
+import { Plus, X, InfoIcon, Settings } from "lucide-react";
 import "../styles/TaskForm.css";
 
 interface TaskFormProps {
   tags: Tag[];
   onAddTask: (task: Task) => void;
   onClose: () => void;
+  onOpenTagManager: () => void;
 }
 
 export const TaskForm: React.FC<TaskFormProps> = ({
   tags,
   onAddTask,
   onClose,
+  onOpenTagManager,
 }) => {
   const [title, setTitle] = useState("");
   const [taskType, setTaskType] = useState<"simple" | "advanced">("simple");
@@ -65,7 +67,22 @@ export const TaskForm: React.FC<TaskFormProps> = ({
     <div className="modal-overlay">
       <div className="task-form">
         <div className="form-header">
-          <h2>Create New Task</h2>
+          <div className="header-title">
+            <h2>Create New Task</h2>
+            <InfoIcon size={20} className="information-icon" />
+            <div className="tooltip">
+              <strong>Simple Task:</strong> A basic task with just a title. Mark
+              it complete when done.
+              <br />
+              <br />
+              <strong>Advanced Task:</strong> Break down complex work into
+              subtasks. Track progress as you complete each subtask. Perfect for
+              multi-step projects.
+              <br />
+              <br />
+              Add tags to categorize and filter your tasks easily.
+            </div>
+          </div>
           <button className="close-btn" onClick={onClose}>
             <X size={20} />
           </button>
@@ -88,7 +105,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({
             <div className="type-selector">
               <button
                 type="button"
-                className={`type-btn ${taskType === "simple" ? "active blue" : ""}`}
+                className={`type-btn ${taskType === "simple" ? "active yellow" : ""}`}
                 onClick={() => setTaskType("simple")}
               >
                 Simple Task
@@ -138,7 +155,17 @@ export const TaskForm: React.FC<TaskFormProps> = ({
           )}
 
           <div className="form-group">
-            <label>Tags</label>
+            <div className="tags-label-row">
+              <label>Tags</label>
+              <button
+                type="button"
+                className="manage-tags-btn"
+                onClick={onOpenTagManager}
+              >
+                <Settings size={14} />
+                Manage Tags
+              </button>
+            </div>
             <div className="tags-selector">
               {tags.map((tag) => (
                 <button
@@ -157,6 +184,11 @@ export const TaskForm: React.FC<TaskFormProps> = ({
                   {tag.name}
                 </button>
               ))}
+              {tags.length === 0 && (
+                <span className="no-tags-hint">
+                  No tags yet. Click "Manage Tags" to create some.
+                </span>
+              )}
             </div>
           </div>
 

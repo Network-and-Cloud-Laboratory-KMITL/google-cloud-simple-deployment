@@ -62,7 +62,6 @@ function App() {
       setTags(tagsData);
       setContributionData(contributionsResult.data);
 
-      // Calculate stats
       const nonArchivedTasks = tasksResult.data;
       setStats({
         total: nonArchivedTasks.length,
@@ -111,7 +110,6 @@ function App() {
       setTasks((prev) =>
         prev.map((task) => (task.id === taskId ? updatedTask : task)),
       );
-      // Refresh stats
       loadData();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to toggle task");
@@ -124,7 +122,6 @@ function App() {
       setTasks((prev) =>
         prev.map((task) => (task.id === taskId ? updatedTask : task)),
       );
-      // Refresh stats and contributions
       loadData();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to toggle subtask");
@@ -178,30 +175,25 @@ function App() {
   };
 
   const handleUpdateTags = async (newTags: Tag[]) => {
-    // Find added, updated, and deleted tags
     const currentTagIds = new Set(tags.map((t) => t.id));
     const newTagIds = new Set(newTags.map((t) => t.id));
 
     try {
-      // Delete removed tags
       for (const tag of tags) {
         if (!newTagIds.has(tag.id)) {
           await apiDeleteTag(tag.id);
         }
       }
 
-      // Add new tags and update existing ones
       const updatedTags: Tag[] = [];
       for (const tag of newTags) {
         if (!currentTagIds.has(tag.id)) {
-          // New tag
           const created = await apiCreateTag({
             name: tag.name,
             color: tag.color,
           });
           updatedTags.push(created);
         } else {
-          // Check if updated
           const existing = tags.find((t) => t.id === tag.id);
           if (
             existing &&
@@ -221,7 +213,6 @@ function App() {
       setTags(updatedTags);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to update tags");
-      // Reload tags on error
       const tagsData = await fetchTags();
       setTags(tagsData);
     }
@@ -246,9 +237,7 @@ function App() {
   };
 
   const filteredTasks = tasks.filter((task) => {
-    // Filter out archived tasks in normal view
     if (viewMode === "tasks" && task.archived) return false;
-    // Show only archived tasks in archive view
     if (viewMode === "archive" && !task.archived) return false;
 
     if (filterStatus === "active" && task.completed) return false;
@@ -279,12 +268,6 @@ function App() {
       )}
       <header className="header">
         <div className="logo">
-          <div className="logo-dots">
-            <div className="logo-dot" style={{ backgroundColor: "#4285F4" }} />
-            <div className="logo-dot" style={{ backgroundColor: "#EA4335" }} />
-            <div className="logo-dot" style={{ backgroundColor: "#FBBC04" }} />
-            <div className="logo-dot" style={{ backgroundColor: "#34A853" }} />
-          </div>
           <h1>Todo Dashboard</h1>
         </div>
         <div className="header-actions">
@@ -412,6 +395,10 @@ function App() {
           tags={tags}
           onAddTask={handleAddTask}
           onClose={() => setShowTaskForm(false)}
+          onOpenTagManager={() => {
+            setShowTaskForm(false);
+            setShowTagManager(true);
+          }}
         />
       )}
 

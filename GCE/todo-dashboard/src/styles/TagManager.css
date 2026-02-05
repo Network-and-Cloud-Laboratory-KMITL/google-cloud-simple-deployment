@@ -1,12 +1,13 @@
 .tag-manager {
     background: var(--bg-primary);
-    border: 2px solid var(--border-color);
-    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
     padding: 24px;
     width: 100%;
     max-width: 450px;
     max-height: 90vh;
     overflow-y: auto;
+    box-shadow: var(--shadow-lg);
 }
 
 .new-tag-form {
@@ -18,14 +19,22 @@
 .new-tag-form input {
     flex: 1;
     padding: 10px 14px;
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
     font-size: 14px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.15s ease;
+}
+
+.new-tag-form input::placeholder {
+    color: var(--text-muted);
 }
 
 .new-tag-form input:focus {
     outline: none;
-    border-color: var(--google-blue);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .color-picker-wrapper {
@@ -38,8 +47,8 @@
 .color-picker-wrapper .color-input {
     width: 40px;
     height: 40px;
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
     cursor: pointer;
     padding: 0;
     background: none;
@@ -82,7 +91,7 @@
     border-radius: 50%;
     border: 2px solid transparent;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
 }
 
 .color-picker.small .color-option {
@@ -104,16 +113,16 @@
     align-items: center;
     justify-content: center;
     width: 40px;
-    border: 2px solid var(--google-blue);
-    border-radius: 8px;
-    background: var(--google-blue);
+    border: none;
+    border-radius: var(--radius);
+    background: var(--primary);
     color: white;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
 }
 
 .add-tag-btn:hover {
-    background: #3367d6;
+    background: var(--primary-dark);
 }
 
 .tag-list {
@@ -135,7 +144,7 @@
 
 .tag-preview {
     padding: 6px 14px;
-    border: 2px solid;
+    border: 1px solid;
     border-radius: 20px;
     font-size: 13px;
     font-weight: 500;
@@ -154,15 +163,15 @@
     width: 28px;
     height: 28px;
     border: none;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     background: transparent;
     color: var(--text-secondary);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
 }
 
 .tag-actions button:hover {
-    background: var(--bg-secondary);
+    background: var(--bg-tertiary);
     color: var(--text-primary);
 }
 
@@ -175,9 +184,11 @@
 .tag-edit-row input {
     flex: 1;
     padding: 8px 12px;
-    border: 2px solid var(--google-blue);
-    border-radius: 6px;
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-sm);
     font-size: 14px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
 }
 
 .save-edit-btn {
@@ -186,8 +197,19 @@
     justify-content: center;
     width: 36px;
     border: none;
-    border-radius: 6px;
-    background: var(--google-green);
+    border-radius: var(--radius-sm);
+    background: var(--success);
     color: white;
     cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.save-edit-btn:hover {
+    background: #059669;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }

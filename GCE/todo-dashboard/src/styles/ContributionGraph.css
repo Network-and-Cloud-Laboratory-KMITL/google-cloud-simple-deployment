@@ -1,9 +1,10 @@
 .contribution-graph {
     background: var(--bg-primary);
-    border: 2px solid var(--border-color);
-    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
     padding: 20px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
 }
 
 .graph-header {
@@ -14,8 +15,9 @@
 }
 
 .graph-header h3 {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
+    color: var(--text-primary);
 }
 
 .total-contributions {
@@ -39,7 +41,7 @@
 
 .weekday-labels span {
     font-size: 10px;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     height: 11px;
     line-height: 11px;
 }
@@ -58,7 +60,7 @@
 .month-labels span {
     position: absolute;
     font-size: 10px;
-    color: var(--text-secondary);
+    color: var(--text-muted);
 }
 
 .cells-container {
@@ -91,7 +93,7 @@
     gap: 6px;
     margin-top: 12px;
     font-size: 11px;
-    color: var(--text-secondary);
+    color: var(--text-muted);
 }
 
 .legend-cells {

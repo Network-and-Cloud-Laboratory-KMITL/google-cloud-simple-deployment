@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import type { Tag } from "../types";
 import { v4 as uuidv4 } from "uuid";
-import { Plus, X, Edit2, Check, Palette } from "lucide-react";
+import { Plus, X, Edit2, Check, Dot, InfoIcon } from "lucide-react";
 import "../styles/TagManager.css";
 
 interface TagManagerProps {
@@ -64,7 +64,10 @@ export const TagManager: React.FC<TagManagerProps> = ({
     <div className="modal-overlay">
       <div className="tag-manager">
         <div className="form-header">
-          <h2>Manage Tags</h2>
+          <div className="header-title">
+            <h2>Manage Tags</h2>
+            <InfoIcon size={20} />
+          </div>
           <button className="close-btn" onClick={onClose}>
             <X size={20} />
           </button>
@@ -85,7 +88,7 @@ export const TagManager: React.FC<TagManagerProps> = ({
               onChange={(e) => setNewTagColor(e.target.value)}
               className="color-input"
             />
-            <Palette size={16} className="color-icon" />
+            <Dot size={16} className="color-icon" />
           </div>
           <button className="add-tag-btn" onClick={addTag}>
             <Plus size={18} />

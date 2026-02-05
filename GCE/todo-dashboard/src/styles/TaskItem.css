@@ -1,9 +1,10 @@
 .task-item {
     background: var(--bg-primary);
-    border: 2px solid var(--border-color);
-    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
     padding: 16px;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
+    box-shadow: var(--shadow-sm);
 }
 
 .task-item:hover {
@@ -30,29 +31,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     border: 2px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     background: transparent;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
 }
 
 .checkbox:hover {
-    border-color: var(--google-green);
+    border-color: var(--success);
 }
 
 .checkbox.checked {
-    background: var(--google-green);
-    border-color: var(--google-green);
+    background: var(--success);
+    border-color: var(--success);
     color: white;
 }
 
 .checkbox.small {
     width: 18px;
     height: 18px;
-    border-radius: 4px;
 }
 
 .task-content {
@@ -75,7 +75,7 @@
 .task-type-badge {
     font-size: 11px;
     padding: 2px 8px;
-    background: var(--google-blue);
+    background: var(--primary);
     color: white;
     border-radius: 10px;
     font-weight: 500;
@@ -91,7 +91,7 @@
 .task-tag {
     font-size: 11px;
     padding: 3px 10px;
-    border: 1.5px solid;
+    border: 1px solid;
     border-radius: 12px;
     font-weight: 500;
 }
@@ -105,7 +105,7 @@
 .progress-bar {
     flex: 1;
     height: 6px;
-    background: var(--bg-secondary);
+    background: var(--bg-tertiary);
     border-radius: 3px;
     overflow: hidden;
 }
@@ -121,6 +121,7 @@
     font-weight: 600;
     color: var(--text-secondary);
     min-width: 36px;
+    text-align: right;
 }
 
 .task-actions {
@@ -138,38 +139,38 @@
     width: 32px;
     height: 32px;
     border: none;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     background: transparent;
     color: var(--text-secondary);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
 }
 
 .expand-btn:hover {
-    background: var(--bg-secondary);
+    background: var(--bg-tertiary);
     color: var(--text-primary);
 }
 
 .delete-btn:hover {
-    background: #fce8e6;
-    color: var(--google-red);
+    background: #fef2f2;
+    color: var(--danger);
 }
 
 .archive-btn:hover {
-    background: #e8f0fe;
-    color: var(--google-blue);
+    background: #eff6ff;
+    color: var(--primary);
 }
 
 .restore-btn:hover {
-    background: #e6f4ea;
-    color: var(--google-green);
+    background: #ecfdf5;
+    color: var(--success);
 }
 
 .subtasks-container {
     margin-top: 12px;
     padding-top: 12px;
     border-top: 1px solid var(--border-color);
-    padding-left: 36px;
+    padding-left: 34px;
 }
 
 .subtask-item {

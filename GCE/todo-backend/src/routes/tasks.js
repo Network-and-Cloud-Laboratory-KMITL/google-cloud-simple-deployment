@@ -163,6 +163,13 @@ tasksRouter.patch("/:taskId/toggle", (req, res) => {
   const updatedTask = {
     ...task,
     completed: !task.completed,
+    subTasks:
+      task.type === "advanced"
+        ? task.subTasks.map((st) => ({
+            ...st,
+            completed: !task.completed,
+          }))
+        : [],
     completedAt: !task.completed ? new Date().toISOString() : null,
     updatedAt: new Date().toISOString(),
   };
